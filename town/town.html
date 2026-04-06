@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Basic Box</title>
+    <style>
+      canvas {
+          display: block;
+          width: 100%;
+          height: 100%;
+      }
+    </style>
+</head>
+
+<body>
+<script type="importmap">
+            {
+                "imports": {
+                    "three": "https://cdn.jsdelivr.net/npm/three@0.179.1/build/three.module.js",
+                    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.179.1/examples/jsm/",
+                    "gui": "https://cdn.jsdelivr.net/npm/lil-gui@0.20/+esm",
+                    "tw": "https://cs.wellesley.edu/~cs307/threejs/libs/tw-fa25.js",
+                    "contrib/": "https://cs.wellesley.edu/~cs307/threejs/contrib/"
+                }
+            }
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { TW } from 'tw';
+import * as TOWN from './town.js';
+
+console.log(`Loaded Three.js version ${THREE.REVISION}`);
+
+const scene = new THREE.Scene();
+const renderer = new THREE.WebGLRenderer();
+
+TW.clearColor = 0xffffff;
+TW.mainInit(renderer, scene);
+
+TOWN.makeTown(scene);
+
+const sceneBB = {
+    minx: -10, maxx: 10,
+    miny: 0, maxy: 10,
+    minz: -10, maxz: 10};
+
+TW.cameraSetup(renderer,
+               scene,
+               sceneBB);
+
+</script>
+</body>
+</html>

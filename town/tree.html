@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Tree</title>
+    <style>
+      canvas {
+          display: block;
+          width: 100%;
+          height: 100%;
+      }
+    </style>
+</head>
+
+<body>
+<script type="importmap">
+            {
+                "imports": {
+                    "three": "https://cdn.jsdelivr.net/npm/three@0.179.1/build/three.module.js",
+                    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.179.1/examples/jsm/",
+                    "gui": "https://cdn.jsdelivr.net/npm/lil-gui@0.20/+esm",
+                    "tw": "https://cs.wellesley.edu/~cs307/threejs/libs/tw-fa25.js",
+                    "contrib/": "https://cs.wellesley.edu/~cs307/threejs/contrib/"
+                }
+            }
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { TW } from 'tw';
+import { createTree } from 'contrib/scott-town/tree.js';
+
+console.log(`Loaded Three.js version ${THREE.REVISION}`);
+
+const scene = new THREE.Scene();
+const renderer = new THREE.WebGLRenderer();
+
+TW.clearColor = 0;
+TW.mainInit(renderer, scene);
+
+const tree = createTree({});
+scene.add(tree);
+
+TW.cameraSetup(renderer,
+               scene,
+               TW.objectBoundingBox(tree));
+
+</script>
+</body>
+</html>
