@@ -5,8 +5,8 @@ snowman. The y coordinate ranges from 0 to 9.5.
 
 import * as THREE from 'three';
 import { TW } from 'tw';
-import { createTree } from 'contrib/scott-town/tree.js';
-import { createSnowPerson } from 'contrib/scott-town/snowperson.js';
+import { createTree } from 'cs360/town/tree.js';
+import { createSnowPerson } from 'cs360/town/snowperson.js';
 
 
 export function makeTown(scene) {
